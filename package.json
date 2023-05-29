@@ -4,7 +4,6 @@
   "description": "A tool that allow developers make their own event management.",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack"
   },
   "keywords": [
