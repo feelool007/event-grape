@@ -19,11 +19,11 @@ interface EventPoolListeners {
   [event: string]: EventPoolListener[];
 }
 
-class EventPool<E extends EventPoolEvents> {
+class EventPool {
   private listeners: EventPoolListeners = {};
   private incrementalListenerId: number = 0;
 
-  constructor(events: E) {
+  constructor(events: EventPoolEvents) {
     let namespaces = Object.keys(events);
     if (namespaces.length === 0) {
       throw new TypeError(
