@@ -80,4 +80,4 @@ eventPool.clear();
 ```
 
 ## License
-[MIT](https://github.com/feelool007/event-pool/blob/master/README.md)
+[MIT](https://github.com/feelool007/event-pool/blob/master/LICENSE)
