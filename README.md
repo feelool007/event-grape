@@ -4,15 +4,11 @@
 
 ## Installation
 
----
-
 ```shell
 $ npm install event-pool
 ```
 
 ## Usage
-
----
 
 ```js
 import EventPool from "event-pool";
@@ -41,8 +37,6 @@ remove();
 ```
 
 ## Instance Methods
-
----
 
 ### listen(namespace: string, event: string, callback: (payload?: any) => void)
 
