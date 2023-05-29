@@ -1,36 +1,36 @@
 import reduce from "../utils/reduce";
 import filter from "../utils/filter";
 
-interface EventPoolEvents {
+interface EventGrapeEvents {
   [namespace: string]: string[];
 }
 
-interface EventPoolCallback<P = any> {
+interface EventGrapeCallback<P = any> {
   (payload?: P): void;
 }
 
-interface EventPoolListener {
+interface EventGrapeListener {
   id: number;
-  callback: EventPoolCallback;
+  callback: EventGrapeCallback;
   once: boolean;
 }
 
-interface EventPoolListeners {
-  [event: string]: EventPoolListener[];
+interface EventGrapeListeners {
+  [event: string]: EventGrapeListener[];
 }
 
-class EventPool {
-  private listeners: EventPoolListeners = {};
+class EventGrape {
+  private listeners: EventGrapeListeners = {};
   private incrementalListenerId: number = 0;
 
-  constructor(events: EventPoolEvents) {
+  constructor(events: EventGrapeEvents) {
     let namespaces = Object.keys(events);
     if (namespaces.length === 0) {
       throw new TypeError(
-        "Should specify at least one event when initialize event pool."
+        "Should specify at least one event when initialize event grape."
       );
     }
-    this.listeners = reduce<string, EventPoolListeners>(
+    this.listeners = reduce<string, EventGrapeListeners>(
       namespaces,
       (acc, namespace) => {
         events[namespace].forEach((event) => {
@@ -49,7 +49,7 @@ class EventPool {
     }
   }
 
-  private add(namespace: string, event: string, listener: EventPoolListener) {
+  private add(namespace: string, event: string, listener: EventGrapeListener) {
     this.listeners[`${namespace}/${event}`].push(listener);
 
     return () => {
@@ -64,7 +64,7 @@ class EventPool {
     );
   }
 
-  listen(namespace: string, event: string, callback: EventPoolCallback) {
+  listen(namespace: string, event: string, callback: EventGrapeCallback) {
     this.validate(namespace, event);
     return this.add(namespace, event, {
       id: ++this.incrementalListenerId,
@@ -73,7 +73,7 @@ class EventPool {
     });
   }
 
-  once(namespace: string, event: string, callback: EventPoolCallback) {
+  once(namespace: string, event: string, callback: EventGrapeCallback) {
     this.validate(namespace, event);
     return this.add(namespace, event, {
       id: ++this.incrementalListenerId,
@@ -101,4 +101,4 @@ class EventPool {
   }
 }
 
-export default EventPool;
+export default EventGrape;

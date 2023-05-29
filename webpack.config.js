@@ -7,7 +7,7 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     filename: "index.js",
     library: {
-      name: "event-pool",
+      name: "event-grape",
       type: "umd",
     },
   },

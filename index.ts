@@ -1,3 +1,3 @@
-import EventPool from "./core/EventPool";
+import EventGrape from "./core/EventGrape";
 
-export default EventPool;
+export default EventGrape;
