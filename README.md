@@ -47,6 +47,7 @@ let remove = eventGrape.listen("namespaceA", "eventA", () => {
   // Do something amazing.
 });
 
+// Unregister this listener once you don't need it.
 remove();
 ```
 
@@ -68,7 +69,8 @@ remove();
 Dispatch the event under that namespace and invoke all listeners. The payload will pass to listeners if it has been assigned.
 
 ```js
-eventGrape.dispatch("namespaceA", "eventA");
+let payload = "foo";
+eventGrape.dispatch("namespaceA", "eventA", payload);
 ```
 
 ### clear(namespace: string, event: string)
@@ -76,8 +78,9 @@ eventGrape.dispatch("namespaceA", "eventA");
 Unregister all listeners of the event under that namespace.
 
 ```js
-eventGrape.clear();
+eventGrape.clear("namespaceA", "eventA");
 ```
 
 ## License
+
 [MIT](https://github.com/feelool007/event-grape/blob/master/LICENSE)
