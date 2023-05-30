@@ -1,21 +1,21 @@
 import reduce from "../utils/reduce";
 import filter from "../utils/filter";
 
-interface EventGrapeEvents {
+export interface EventGrapeEvents {
   [namespace: string]: string[];
 }
 
-interface EventGrapeCallback<P = any> {
+export interface EventGrapeCallback<P = any> {
   (payload?: P): void;
 }
 
-interface EventGrapeListener {
+export interface EventGrapeListener {
   id: number;
   callback: EventGrapeCallback;
   once: boolean;
 }
 
-interface EventGrapeListeners {
+export interface EventGrapeListeners {
   [event: string]: EventGrapeListener[];
 }
 
